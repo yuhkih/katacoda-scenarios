@@ -51,18 +51,18 @@ tmpfs            99M     0   99M   0% /run/user/1000
 
 ```bash
 ansible 2.9.0
-  config file = /jupyter/.ansible.cfg
-  configured module search path = ['/jupyter/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
-  ansible python module location = /usr/local/lib/python3.6/site-packages/ansible
-  executable location = /usr/local/bin/ansible
-  python version = 3.6.8 (default, Oct  7 2019, 17:58:22) [GCC 8.2.1 20180905 (Red Hat 8.2.1-3)]
+  config file = /root/.ansible.cfg
+  configured module search path = ['/root/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/site-packages/ansible
+  executable location = /usr/bin/ansible
+  python version = 2.7.5 (default, Jul  13 2018,  13:06:57) [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]
 ```
 
 > Note: 出力内容は環境によって異なる場合があります。
 
 ansible コマンドに `--version` オプションをつけると、実行環境に関する基本的な情報が出力されます。バージョンや利用している Python のバージョンなどです。ここでは以下の行に注目します。
 
-- `config file = /jupyter/.ansible.cfg`
+- `config file = /root/.ansible.cfg`
 
 これは、このディレクトリで ansible コマンドを実行した際に読み込まれる Ansible の設定ファイルのパスを表示しています。このファイルは Ansible の基本的な挙動を制御するための設定ファイルです。
 
@@ -109,7 +109,7 @@ node-3 ansible_host=52.195.15.8
 
 [all:vars]
 ansible_user=centos
-ansible_ssh_private_key_file=/jupyter/aitac-automation-keypair.pem
+ansible_ssh_private_key_file=/root/aitac-automation-keypair.pem
 ```
 
 このインベントリーは `ini` ファイル形式で記述されています。他にも `YAML` 形式や、スクリプトで動的にインベントリーを構成する `ダイナミックインベントリー` という仕組みもサポートされています。詳細は [How to build your inventory](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html) を確認してください。
@@ -193,7 +193,7 @@ node-3 | SUCCESS => {"ansible_facts": {"discovered_interpreter_python": "/usr/bi
 ```bash
 [all:vars]
 ansible_user=centos
-ansible_ssh_private_key_file=/jupyter/aitac-automation-keypair.pem
+ansible_ssh_private_key_file=/root/aitac-automation-keypair.pem
 ```
 
 ここでは、全てのグループに対する変数として `[all:vars]` を定義し、そこで認証に利用する変数を定義しています。
